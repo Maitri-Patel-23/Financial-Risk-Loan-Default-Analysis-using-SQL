@@ -1,0 +1,78 @@
+1️⃣ What the data is about
+
+Your dataset is about people who took loans from a bank.
+
+For each person, we have information like:
+
+Example columns	What it means
+income_inr	How much money they earn
+loan_amount_inr	How much money they borrowed
+credit_score	A number showing how trustworthy their finances are
+existing_emis	How much money they are already paying each month for other loans
+default_flag	Whether they failed to pay the loan or not
+age, city, job_type, loan_purpose etc.	Personal info
+2️⃣ What “default” means
+
+Default = a person did not pay back the loan on time (they failed to repay).
+
+No default = a person paid back their loan successfully.
+
+So in your dataset:
+
+default_flag = 0 → person defaulted (did not pay back)
+
+default_flag = 1 → person paid back successfully
+
+We figured this out by looking at how many 0s and 1s there are.
+
+3️⃣ Why numbers were a problem
+
+When we imported the data:
+
+All numbers were stored as TEXT, like "395.0" instead of just 395.
+
+PostgreSQL couldn’t do math or comparisons on text properly.
+
+If you tried to convert text to a number, it gave errors.
+
+So we cleaned the data:
+
+Converted text numbers to real numbers.
+
+Rounded decimal numbers before turning them into whole numbers.
+
+Created a new clean table called loans_clean.
+
+4️⃣ What we analyzed
+
+Now that the data was clean, we asked questions like:
+
+Which income group is more likely to fail to pay back loans?
+
+Do people with low credit scores default more?
+
+Do people with big monthly payments (EMIs) struggle more?
+
+We calculated percentages of people who defaulted in each group.
+
+5️⃣ What the error we fixed was
+
+Initially, we assumed 1 = default → this gave 88% default rate
+
+That is impossible in real life → we were interpreting the column wrongly
+
+After checking, we saw 0 = default, 1 = no default → recalculated realistic default rate (~11%)
+
+✅ This is exactly what a real data analyst does: doesn’t blindly trust data, validates it first.
+
+6️⃣ What this project shows
+
+After cleaning and analyzing:
+
+The data is accurate and reliable
+
+You know who is likely to default based on income, credit score, or EMI
+
+You can present insights in tables (segmentation) for decision-making
+
+You solved a real-world data problem: messy input + misleading target values
