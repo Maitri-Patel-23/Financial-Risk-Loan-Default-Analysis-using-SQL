@@ -45,5 +45,6 @@ Financial-Credit-Risk-Analysis
 │
 ├── powerbi
 │   └── loan_dashboard.pbix    # Power BI dashboard file
-│
+│   └── loan_dashboard.png
+|
 └── README.md                  # Project documentation
